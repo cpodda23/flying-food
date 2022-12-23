@@ -6,5 +6,6 @@ export const StyledTag = styled.div<{
   bgColor: ThemeColor
 }>`
   background-color: ${({ theme, bgColor }) => theme.colors[bgColor]};
-  border-radius: ${({ theme, rounded }) => rounded && theme.radii.at(1)}px;
+  border-radius: ${({ theme, rounded }) => rounded && theme.radii.at(0)}px;
+  padding: 0.2rem 0.8rem;
 `
