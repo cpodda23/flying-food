@@ -8,7 +8,7 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { theme, ThemeColor } from '../../style/theme'
 
-type IconName = keyof typeof iconsMap
+export type IconName = keyof typeof iconsMap
 
 type Props = {
   name: IconName
