@@ -8,6 +8,7 @@ type Props = {
   variant?: TextVariant
   size?: FontSize
   bold?: boolean
+  capitalize?: boolean
   upperCase?: boolean
   className?: string
 }
@@ -18,6 +19,7 @@ export const Text = ({
   bold,
   upperCase,
   className,
+  capitalize,
   color = 'text',
   variant = 'p'
 }: Props) => {
@@ -30,6 +32,7 @@ export const Text = ({
       variant={variant}
       bold={bold}
       upperCase={upperCase}
+      capitalize={capitalize}
     >
       {children}
     </StyledText>

@@ -17,40 +17,40 @@ export const theme = {
   },
   textVariants: {
     h1: {
-      size: 'xl',
+      fontSize: 'xl',
       lineHeight: 1.4
     },
     h2: {
-      size: 'lg',
+      fontSize: 'lg',
       lineHeight: 1.2
     },
     h3: {
-      size: 'lg',
+      fontSize: 'lg',
       lineHeight: 1.2
     },
     h4: {
-      size: 'lg',
+      fontSize: 'lg',
       lineHeight: 1.2
     },
     h5: {
-      size: 'lg',
+      fontSize: 'lg',
       lineHeight: 1.2
     },
     h6: {
-      size: 'lg',
+      fontSize: 'lg',
       lineHeight: 1.2
     },
     p: {
-      size: 'md',
+      fontSize: 'md',
       lineHeight: 1
     },
     span: {
-      size: 'md',
-      lineHeight: 1
+      fontSize: 'inherit',
+      lineHeight: 'inherit'
     }
   },
   radii: [4, 8, 12]
-}
+} as const
 
 export type AppTheme = typeof theme
 
