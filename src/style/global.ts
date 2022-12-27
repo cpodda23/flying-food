@@ -1,3 +1,4 @@
+import { NONAME } from 'dns'
 import { css } from '@emotion/react'
 
 export const globalStyle = css`
@@ -9,5 +10,9 @@ export const globalStyle = css`
 
   body {
     font-family: 'Futura PT', sans-serif;
+  }
+
+  a {
+    text-decoration: none;
   }
 `
