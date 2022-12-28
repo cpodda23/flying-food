@@ -5,8 +5,9 @@ export const theme = {
     secondaryDark: '#285AB3',
     text: '#28282C',
     textInverse: '#F0F0F0',
-    background: '',
-    backgroundDark: ''
+    background: '#FCFCFC',
+    backgroundDark: '#36373B',
+    lightGrey: '#C9C9C9'
   },
   fontSizes: {
     // rem
