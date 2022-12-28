@@ -7,7 +7,8 @@ export const theme = {
     textInverse: '#F0F0F0',
     background: '#FCFCFC',
     backgroundDark: '#36373B',
-    lightGrey: '#C9C9C9'
+    lightGrey: '#C9C9C9',
+    danger: '#B12222'
   },
   fontSizes: {
     // rem
@@ -50,7 +51,7 @@ export const theme = {
       lineHeight: 'inherit'
     }
   },
-  radii: [4, 8, 12, 20],
+  radii: [4, 8, 12, 20, 100],
   sizes: {
     sm: 8,
     md: 16,
