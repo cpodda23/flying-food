@@ -14,7 +14,7 @@ export const StyledText = styled.p<{
   color: ${({ theme, textColor }) => theme.colors[textColor]};
   font-size: ${({ theme, textSize, variant }) => {
     const variantFontSize = theme.textVariants[variant].fontSize
-    if (variantFontSize === 'inherit') return 'inherit'
+    if (variantFontSize === 'inherit') return
     const size = textSize || variantFontSize || 'md'
     return theme.fontSizes[size] + 'rem'
   }};
