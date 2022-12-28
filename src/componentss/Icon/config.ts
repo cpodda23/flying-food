@@ -33,8 +33,6 @@ import {
   faUser
 } from '@fortawesome/free-solid-svg-icons'
 
-export type IconName = keyof typeof iconsMap
-
 export const iconsMap = {
   bagShopping: faBagShopping,
   arrowRight: faArrowRight,
