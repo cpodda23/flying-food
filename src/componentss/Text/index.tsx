@@ -1,17 +1,10 @@
 import { ReactNode } from 'react'
-import { ThemeColor, FontSize } from '../../style/theme'
-import { StyledText, TextVariant } from './styled'
+import { StyledText, StyledTextProp } from './styled'
 
 type Props = {
   children: ReactNode
-  color?: ThemeColor
-  variant?: TextVariant
-  size?: FontSize
-  bold?: boolean
-  capitalize?: boolean
-  upperCase?: boolean
   className?: string
-}
+} & Partial<StyledTextProp>
 
 export const Text = ({
   children,
@@ -20,6 +13,7 @@ export const Text = ({
   upperCase,
   className,
   capitalize,
+  inline,
   color = 'text',
   variant = 'p'
 }: Props) => {
@@ -27,12 +21,13 @@ export const Text = ({
     <StyledText
       className={className}
       as={variant}
-      textColor={color}
-      textSize={size}
+      color={color}
+      size={size}
       variant={variant}
       bold={bold}
       upperCase={upperCase}
       capitalize={capitalize}
+      inline={inline}
     >
       {children}
     </StyledText>
