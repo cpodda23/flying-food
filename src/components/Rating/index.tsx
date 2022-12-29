@@ -1,15 +1,25 @@
+import { ThemeColor } from '../../style/theme'
 import { Icon } from '../Icon'
 import { StyledRating } from './styled'
 
 type Props = {
-  flex?: boolean
+  value: number
+  color?: ThemeColor
+  stars?: number
 }
 
-export const Rating = ({ flex }: Props) => {
-  return null
-  /*  return (
-    <StyledRating className={className} color={color}>
-      <Icon icon={icon} />
+export const Rating = ({ value, color = 'primary', stars = 5 }: Props) => {
+  const getIcon = (index: number) => {
+    if (index + 1 <= value) return 'starFull'
+    if (index + 0.5 <= value) return 'starHalf'
+    return 'starEmpty'
+  }
+
+  return (
+    <StyledRating>
+      {Array.from({ length: stars }).map((_, i) => (
+        <Icon name={getIcon(i)} color={color} key={i} />
+      ))}
     </StyledRating>
-  ) */
+  )
 }
