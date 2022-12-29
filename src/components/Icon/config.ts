@@ -37,7 +37,7 @@ export const iconsMap = {
   bagShopping: faBagShopping,
   arrowRight: faArrowRight,
   arrowLeft: faArrowLeft,
-  star: faStar,
+  starFull: faStar,
   phone: faPhone,
   burger: faBurger,
   pizza: faPizzaSlice,
