@@ -52,10 +52,17 @@ export const theme = {
     }
   },
   radii: [4, 8, 12, 20, 100],
+  // padding/margin
+  spacings: {
+    sm: 16,
+    md: 32,
+    lg: 64
+  },
+  // heights
   sizes: {
-    sm: 8,
-    md: 16,
-    lg: 32
+    sm: 20,
+    md: 34,
+    lg: 48
   }
 } as const
 

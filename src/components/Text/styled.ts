@@ -1,6 +1,8 @@
 import styled from '@emotion/styled'
 import { FontSize, ThemeColor } from '../../style/theme'
 
+export const UNIT = 'rem'
+
 export type TextVariant = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span'
 
 export type StyledTextProp = {
@@ -16,10 +18,11 @@ export type StyledTextProp = {
 export const StyledText = styled.p<StyledTextProp>`
   color: ${({ theme, color }) => theme.colors[color]};
   font-size: ${({ theme, size, variant }) => {
+    if (size) return theme.fontSizes[size] + UNIT
     const variantFontSize = theme.textVariants[variant].fontSize
     if (variantFontSize === 'inherit') return
     const fontSize = size || variantFontSize
-    return theme.fontSizes[fontSize] + 'rem'
+    return theme.fontSizes[fontSize] + UNIT
   }};
   line-height: ${({ theme, variant }) => theme.textVariants[variant].lineHeight};
   font-weight: ${({ bold }) => (bold ? 'bold' : 'normal')};

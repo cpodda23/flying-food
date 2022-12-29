@@ -30,7 +30,8 @@ import {
   faSeedling,
   faStar,
   faTruck,
-  faUser
+  faUser,
+  faXmark
 } from '@fortawesome/free-solid-svg-icons'
 
 export const iconsMap = {
@@ -63,5 +64,6 @@ export const iconsMap = {
   instagram: faInstagram,
   googlePlus: faGooglePlus,
   facebook: faFacebook,
-  linkedin: faLinkedinIn
+  linkedin: faLinkedinIn,
+  x: faXmark
 }
