@@ -7,9 +7,18 @@ type Props = {
   icon: IconName
   color?: ThemeColor
   inverse?: boolean
+  onClick?: () => void
 } & Partial<StyledBaseButtonProps>
 
-export const IconButton = ({ icon, size, color, bgColor, inverse, outlined }: Props) => {
+export const IconButton = ({
+  icon,
+  size,
+  color,
+  bgColor,
+  inverse,
+  outlined,
+  onClick
+}: Props) => {
   const iconSize = size === 'lg' ? 'xl' : 'sm'
   const backgroundColor = inverse ? color : bgColor
   const iconColor = inverse ? bgColor : color
@@ -21,6 +30,7 @@ export const IconButton = ({ icon, size, color, bgColor, inverse, outlined }: Pr
       size={size}
       bgColor={backgroundColor}
       outlined={outlined}
+      onClick={onClick}
     >
       <IconContainer>
         <Icon name={icon} size={iconSize} color={iconColor} />

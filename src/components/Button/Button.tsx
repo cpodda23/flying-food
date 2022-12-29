@@ -15,6 +15,7 @@ type Props = {
   size?: Size
   btnsize?: Size
   inverse?: boolean
+  onClick?: () => void
 }
 
 export const Button = ({
@@ -27,7 +28,8 @@ export const Button = ({
   bgColor = 'primary',
   color = 'text',
   size = 'md',
-  btnsize
+  btnsize,
+  onClick
 }: Props) => {
   const textSize = size === 'lg' ? 'md' : 'sm'
   const iconSize = size === 'lg' ? 'xl' : 'sm'
@@ -35,7 +37,12 @@ export const Button = ({
   const textColor = inverse ? bgColor : color
 
   return (
-    <BaseButton bgColor={backgroundColor} size={size} outlined={outlined}>
+    <BaseButton
+      bgColor={backgroundColor}
+      size={size}
+      outlined={outlined}
+      onClick={onClick}
+    >
       <StyledText
         btnsize={size}
         size={textSize}

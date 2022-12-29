@@ -3,6 +3,7 @@ import { StyledBaseButton, StyledBaseButtonProps } from './styled'
 
 type Props = {
   className?: string
+  onClick?: () => void
   children: ReactNode
   squared?: boolean
 } & Partial<StyledBaseButtonProps>
@@ -12,6 +13,7 @@ export const BaseButton = ({
   className,
   outlined,
   squared,
+  onClick,
   size = 'md',
   radius = 4,
   bgColor = 'primary'
@@ -24,6 +26,7 @@ export const BaseButton = ({
       radius={radius}
       bgColor={bgColor}
       squared={squared}
+      onClick={onClick}
     >
       {children}
     </StyledBaseButton>
