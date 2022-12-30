@@ -6,6 +6,10 @@ import {
   faLinkedinIn
 } from '@fortawesome/free-brands-svg-icons'
 import {
+  faStar as anotherfaStar,
+  faClock as anotherFaClock
+} from '@fortawesome/free-regular-svg-icons'
+import {
   faAppleWhole,
   faArrowLeft,
   faArrowRight,
@@ -29,6 +33,7 @@ import {
   faPlus,
   faSeedling,
   faStar,
+  faStarHalfStroke,
   faTruck,
   faUser,
   faXmark
@@ -39,6 +44,8 @@ export const iconsMap = {
   arrowRight: faArrowRight,
   arrowLeft: faArrowLeft,
   starFull: faStar,
+  starEmpty: anotherfaStar,
+  starHalf: faStarHalfStroke,
   phone: faPhone,
   burger: faBurger,
   pizza: faPizzaSlice,
@@ -59,7 +66,8 @@ export const iconsMap = {
   search: faMagnifyingGlass,
   plus: faPlus,
   minus: faMinus,
-  clock: faClock,
+  clockFull: faClock,
+  clockEmpty: anotherFaClock,
   twitter: faTwitter,
   instagram: faInstagram,
   googlePlus: faGooglePlus,
