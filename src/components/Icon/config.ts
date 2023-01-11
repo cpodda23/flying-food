@@ -5,7 +5,10 @@ import {
   faFacebook,
   faLinkedinIn
 } from '@fortawesome/free-brands-svg-icons'
-import { faStar as faStarEmpty } from '@fortawesome/free-regular-svg-icons'
+import {
+  faStar as faStarEmpty,
+  faHeart as faHeartEmpty
+} from '@fortawesome/free-regular-svg-icons'
 import {
   faAppleWhole,
   faArrowLeft,
@@ -59,7 +62,8 @@ export const iconsMap = {
   delivery: faTruck,
   award: faAward,
   bonuses: faGift,
-  heart: faHeart,
+  heartFull: faHeart,
+  heartEmpty: faHeartEmpty,
   search: faMagnifyingGlass,
   plus: faPlus,
   minus: faMinus,
