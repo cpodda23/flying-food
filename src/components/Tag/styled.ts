@@ -7,7 +7,7 @@ export const StyledTag = styled.div<{
   size: Size
 }>`
   background-color: ${({ theme, bgColor }) => theme.colors[bgColor]};
-  border-radius: ${({ theme, rounded }) => rounded && theme.radii.at(0)}px;
+  border-radius: ${({ theme, rounded }) => rounded && theme.radii.at(2)}px;
   padding-inline: ${({ theme, size }) => theme.sizes[size]}px;
-  padding-block: ${({ theme, size }) => theme.sizes[size]}px;
+  padding-block: ${({ theme, size }) => theme.sizes[size] / 2}px;
 `

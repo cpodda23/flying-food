@@ -51,7 +51,7 @@ export const theme = {
       lineHeight: 'inherit'
     }
   },
-  radii: [4, 8, 12, 20, 100],
+  radii: [4, 8, 12, 20, 50, 100],
   // padding/margin
   spacings: {
     sm: 16,
