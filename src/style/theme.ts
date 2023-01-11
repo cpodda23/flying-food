@@ -54,15 +54,19 @@ export const theme = {
   radii: [4, 8, 12, 20, 50, 100],
   // padding/margin
   spacings: {
-    sm: 16,
-    md: 32,
-    lg: 64
+    sm: 8,
+    md: 16,
+    lg: 32,
+    xl: 42
   },
   // heights
   sizes: {
     sm: 20,
     md: 34,
     lg: 48
+  },
+  containers: {
+    content: 1000
   }
 } as const
 

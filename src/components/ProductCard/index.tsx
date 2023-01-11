@@ -39,7 +39,7 @@ export const ProductCard = ({
           icon="bagShopping"
           size={buttonSize}
           color="textInverse"
-          onClick={onClick ? () => onClick() : undefined}
+          onClick={onClick}
         />
       </StyledShopButton>
     </StyledCard>

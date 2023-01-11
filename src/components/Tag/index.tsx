@@ -4,7 +4,7 @@ import { StyledTag } from './styled'
 
 type Props = {
   title: string
-  rounded: boolean
+  rounded?: boolean
   color?: ThemeColor
   bgColor?: ThemeColor
   size?: Size
