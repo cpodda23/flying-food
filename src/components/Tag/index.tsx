@@ -21,7 +21,7 @@ export const Tag = ({
 }: Props) => {
   return (
     <StyledTag size={size} className={className} rounded={rounded} bgColor={bgColor}>
-      <Text color={color} size={size}>
+      <Text color={color} size={size} capitalize>
         {title}
       </Text>
     </StyledTag>
