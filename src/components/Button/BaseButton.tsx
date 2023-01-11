@@ -2,9 +2,9 @@ import { ReactNode } from 'react'
 import { StyledBaseButton, StyledBaseButtonProps } from './styled'
 
 type Props = {
+  children: ReactNode
   className?: string
   onClick?: () => void
-  children: ReactNode
   squared?: boolean
 } & Partial<StyledBaseButtonProps>
 
