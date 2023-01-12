@@ -7,6 +7,7 @@ export const theme = {
     textInverse: '#F0F0F0',
     background: '#FCFCFC',
     backgroundDark: '#36373B',
+    darkGrey: '#4a4b4f',
     lightGrey: '#C9C9C9',
     danger: '#B12222'
   },
