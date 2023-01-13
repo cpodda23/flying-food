@@ -27,7 +27,7 @@ export const Newsletter = ({ onChange, value, onClick }: Props) => {
           to news
         </Text>
       </div>
-      <Stack className="input">
+      <div className="input-container">
         <Input
           bgColor="textInverse"
           placeholder="enter your email"
@@ -37,7 +37,7 @@ export const Newsletter = ({ onChange, value, onClick }: Props) => {
         <Button bgColor="secondaryDark" onClick={onClick} color="textInverse">
           subscribe
         </Button>
-      </Stack>
+      </div>
     </StyledNewsletter>
   )
 }
