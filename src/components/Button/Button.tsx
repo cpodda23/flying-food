@@ -5,6 +5,7 @@ import { BaseButton } from './BaseButton'
 import { IconContainer, StyledText } from './styled'
 
 type Props = {
+  className?: string
   children: string
   icon?: IconName
   color?: ThemeColor
@@ -19,6 +20,7 @@ type Props = {
 }
 
 export const Button = ({
+  className,
   icon,
   children,
   outlined,

@@ -8,8 +8,11 @@ export type StyledInputProps = {
   inputSize: Size
 }
 
-export const StyledInput = styled.input<StyledInputProps>`
+export const StyledContainer = styled.div`
   width: 100%;
+`
+
+export const StyledInput = styled.input<StyledInputProps>`
   border: none;
   color: ${({ theme, textColor }) => theme.colors[textColor]};
   border-radius: ${({ theme }) => theme.radii.at(3)}px;

@@ -1,7 +1,8 @@
 import { Size, ThemeColor } from '../../style/theme'
-import { StyledInput, StyledInputProps, StyledLabel } from './styled'
+import { StyledContainer, StyledInput, StyledInputProps, StyledLabel } from './styled'
 
 type Props = {
+  className?: string
   textColor?: ThemeColor
   labelColor?: ThemeColor
   placeholder?: string
@@ -14,6 +15,7 @@ type Props = {
 } & Partial<StyledInputProps>
 
 export const Input = ({
+  className,
   label,
   bgColor,
   value,
@@ -27,7 +29,7 @@ export const Input = ({
   textColor = 'text'
 }: Props) => {
   return (
-    <div>
+    <StyledContainer>
       {label && (
         <StyledLabel color={labelColor} htmlFor={id}>
           {label}
@@ -44,6 +46,6 @@ export const Input = ({
         id={id}
         onChange={onChange ? (event) => onChange(event.target.value) : undefined}
       />
-    </div>
+    </StyledContainer>
   )
 }
