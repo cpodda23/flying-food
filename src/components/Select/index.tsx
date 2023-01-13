@@ -8,7 +8,9 @@ export const Select = ({ items }: Props) => {
   return (
     <StyledSelect>
       {items.map((item) => (
-        <option value={item.id}>{item.name}</option>
+        <option value={item.id} key={item.id}>
+          {item.name}
+        </option>
       ))}
     </StyledSelect>
   )
