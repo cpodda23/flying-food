@@ -1,9 +1,8 @@
 import { ThemeProvider } from '@emotion/react'
 import { Global } from '@emotion/react'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import { Layout } from './components/Layout'
 import { Cart } from './Pages/Cart'
-import { Home } from './Pages/Home'
 import { NotFound } from './Pages/NotFound'
 import { ProductDetail } from './Pages/ProductDetail'
 import { Products } from './Pages/Products'
@@ -16,7 +15,7 @@ function App() {
       <Global styles={globalStyle} />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Navigate to="products" />} />
           <Route path="/" element={<Layout />}>
             <Route path="products" element={<Products />} />
             <Route path="products/:id" element={<ProductDetail />} />
