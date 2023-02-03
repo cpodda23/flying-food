@@ -1,3 +1,4 @@
+import { ValueType } from '../../api/types'
 import { Size } from '../../style/theme'
 import { Rating } from '../Rating'
 import { Text } from '../Text'
@@ -7,7 +8,7 @@ type Props = {
   productName: string
   isAvailable: boolean
   stars: number
-  price: string
+  price: ValueType
   title?: string
   size?: Size
 }
@@ -31,7 +32,7 @@ export const ProductDescription = ({
       </Text>
       <Rating value={stars} />
       <Text size={textSize} bold>
-        $ {price}
+        {`${price.type} ${price.value}`}
       </Text>
     </StyledProductDescription>
   )

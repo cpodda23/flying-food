@@ -1,3 +1,4 @@
+import { ValueType } from '../../api/types'
 import { Size } from '../../style/theme'
 import { IconButton } from '../Button'
 import { ProductDescription } from './ProductDescription'
@@ -10,7 +11,7 @@ type Props = {
   name: string
   isAvailable?: boolean
   rating: number
-  price: string
+  price: ValueType
   size?: Size
   onClick?: () => void
 }
