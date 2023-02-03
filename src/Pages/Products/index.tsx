@@ -12,13 +12,13 @@ export const Products = () => {
 
   return (
     <div>
-      {products.map((product) => (
+      {products?.map((product) => (
         <ProductCard
+          key={product.name}
           name={product.name}
           imgSrc={product.imageUrl}
           rating={product.rating}
-          // price={product.price}
-          //  size={product.size}
+          price={`${'$'} ${product.price}`}
         />
       ))}
     </div>
