@@ -1,4 +1,3 @@
-import { ValueType } from '../../api/types'
 import { Size } from '../../style/theme'
 import { Rating } from '../Rating'
 import { Text } from '../Text'

@@ -1,4 +1,3 @@
-import { ValueType } from '../../api/types'
 import { Size } from '../../style/theme'
 import { IconButton } from '../Button'
 import { ProductDescription } from './ProductDescription'
