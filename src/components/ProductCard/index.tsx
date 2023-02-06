@@ -11,7 +11,7 @@ type Props = {
   name: string
   isAvailable?: boolean
   rating: number
-  price: ValueType
+  price: string
   size?: Size
   onClick?: () => void
 }

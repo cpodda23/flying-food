@@ -8,7 +8,7 @@ type Props = {
   productName: string
   isAvailable: boolean
   stars: number
-  price: ValueType
+  price: string
   title?: string
   size?: Size
 }
@@ -32,7 +32,7 @@ export const ProductDescription = ({
       </Text>
       <Rating value={stars} />
       <Text size={textSize} bold>
-        {`${price.type} ${price.value}`}
+        {price}
       </Text>
     </StyledProductDescription>
   )
