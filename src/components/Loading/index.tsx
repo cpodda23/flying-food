@@ -1,5 +1,9 @@
-import { StyledLoading } from './styled'
+import { StyledContainer, StyledLoading } from './styled'
 
 export const Loading = () => {
-  return <StyledLoading />
+  return (
+    <StyledContainer>
+      <StyledLoading />
+    </StyledContainer>
+  )
 }

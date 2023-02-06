@@ -1,10 +1,16 @@
 import styled from '@emotion/styled'
+import { center } from '../../style/utils'
+
+export const StyledContainer = styled.div`
+  ${center}
+  height: 300px;
+  width: 600px;
+`
 
 export const StyledLoading = styled.div`
-  box-sizing: border-box;
   display: block;
-  width: 100px;
-  height: 100px;
+  width: 60px;
+  height: 60px;
   margin: 8px;
   border: 8px solid #fff;
   border-radius: 50%;
