@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { Size } from '../../style/theme'
 import { IconButton } from '../Button'
 import { ProductDescription } from './ProductDescription'
@@ -12,6 +13,7 @@ type Props = {
   rating: number
   price: string
   size?: Size
+  linkUrl: string
   onClick?: () => void
 }
 
@@ -21,27 +23,30 @@ export const ProductCard = ({
   rating,
   price,
   size = 'md',
+  linkUrl,
   onClick
 }: Props) => {
   const buttonSize = size === 'md' ? 'lg' : 'md'
   return (
-    <StyledCard size={size}>
-      <ProductThumb size={size} src={imgSrc} isNew alt={name} />
-      <ProductDescription
-        productName={name}
-        stars={rating}
-        price={price}
-        isAvailable
-        size={size}
-      />
-      <StyledShopButton>
-        <IconButton
-          icon="bagShopping"
-          size={buttonSize}
-          color="textInverse"
-          onClick={onClick}
+    <Link to={linkUrl}>
+      <StyledCard size={size}>
+        <ProductThumb size={size} src={imgSrc} isNew alt={name} />
+        <ProductDescription
+          productName={name}
+          stars={rating}
+          price={price}
+          isAvailable
+          size={size}
         />
-      </StyledShopButton>
-    </StyledCard>
+        <StyledShopButton>
+          <IconButton
+            icon="bagShopping"
+            size={buttonSize}
+            color="textInverse"
+            onClick={onClick}
+          />
+        </StyledShopButton>
+      </StyledCard>
+    </Link>
   )
 }
