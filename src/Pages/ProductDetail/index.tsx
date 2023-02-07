@@ -1,32 +1,52 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { getProductsById } from '../../api'
-import { ProductDto } from '../../api/types'
+import { getProductsById, getTagsById } from '../../api'
+import { ProductDto, TagDto } from '../../api/types'
+import { Button } from '../../components/Button'
 import { Loading } from '../../components/Loading'
-import { ProductCard } from '../../components/ProductCard'
+import { ProductSelected } from '../../components/ProductSelected'
+import { QuantitySelector } from '../../components/QuantitySelector'
+import { Stack } from '../../components/Stack'
+import { StyledProductDetail } from './styled'
 
 export const ProductDetail = () => {
-  const params = useParams()
+  const params = useParams<{ id: string }>()
   const [product, setProduct] = useState<ProductDto>()
-  console.log(params)
+  const [tags, setTags] = useState<TagDto>()
 
   useEffect(() => {
-    getProductsById('00b59df6-9705-43b7-ab47-783520812668').then(setProduct)
+    getProductsById(params.id!).then(setProduct)
+    // getTagsById(product?.tags.map((tag) => tag) ? tags : '').setTags(tags)
   }, [])
+
   if (!product) {
     return <Loading />
   }
+
   return (
-    <div>
-      <ProductCard
-        name={product.name}
-        rating={product.rating}
-        price={`${product.price.type} ${product.price.value}`}
+    <StyledProductDetail>
+      <ProductSelected
+        // productTag={tags}
         imgSrc={product.imageUrl}
+        description={product.description}
+        productName={product.name}
+        stars={product.rating}
       />
-    </div>
+
+      <Stack direction="horizontal">
+        <Button
+          bgColor="backgroundDark"
+          color="textInverse"
+          icon="bagShopping"
+          iconBgColor="primary"
+        >
+          add to cart
+        </Button>
+        <QuantitySelector />
+      </Stack>
+    </StyledProductDetail>
   )
 }
 
 // aggiungere api getProduct by id e random (prodotto da non visualizzare e numero di prodotti da visualizzare)
-// accedo al prodotto by id cliccando sulla ProductCard (ma non sul batton del carrello)
+// accedo al prodotto by id cliccando sulla ProductCard (ma non sul button del carrello)
