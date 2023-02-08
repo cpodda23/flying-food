@@ -23,7 +23,7 @@ export const PageHeader = ({ tags, onTagClick, selectedTag }: Props) => {
               onTagClick(tag.id)
             }}
           >
-            {tag.name}
+            {tag.namePlural}
           </Button>
         ))}
       </Stack>
