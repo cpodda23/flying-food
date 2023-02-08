@@ -10,6 +10,7 @@ export const Products = () => {
   const [products, setProducts] = useState<ProductDto[]>()
   const [tags, setTags] = useState<TagDto[]>()
   const [tagFilter, setTagFilter] = useState('')
+
   /* const [loading, setLoading] = useState(false)
   
     useEffect(() => {
@@ -50,6 +51,7 @@ export const Products = () => {
       <StyledGrid>
         {filteredProducts?.map((product) => (
           <ProductCard
+            linkUrl={`${product.id}`}
             key={product.id}
             name={product.name}
             imgSrc={product.imageUrl}
