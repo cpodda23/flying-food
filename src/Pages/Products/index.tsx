@@ -56,7 +56,7 @@ export const Products = () => {
             name={product.name}
             imgSrc={product.imageUrl}
             rating={product.rating}
-            price={`${product.price.type} ${product.price.value}`}
+            price={product.price}
           />
         ))}
       </StyledGrid>

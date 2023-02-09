@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { ValueType } from '../../api/types'
 import { Size } from '../../style/theme'
 import { IconButton } from '../Button'
 import { ProductDescription } from './ProductDescription'
@@ -11,11 +12,17 @@ type Props = {
   name: string
   isAvailable?: boolean
   rating: number
-  price: string
+  price: ValueType
   size?: Size
-  linkUrl: string
+  linkUrl?: string
   onClick?: () => void
 }
+
+const priceSymbols = {
+  USD: '$',
+  EUR: '€',
+  JPY: '¥'
+} as any
 
 export const ProductCard = ({
   imgSrc,
@@ -27,26 +34,31 @@ export const ProductCard = ({
   onClick
 }: Props) => {
   const buttonSize = size === 'md' ? 'lg' : 'md'
+
+  const content = (
+    <>
+      <ProductThumb size={size} src={imgSrc} isNew alt={name} />
+      <ProductDescription
+        productName={name}
+        stars={rating}
+        price={`${priceSymbols[price.type]} ${price.value}`}
+        isAvailable
+        size={size}
+      />
+    </>
+  )
+
   return (
-    <Link to={linkUrl}>
-      <StyledCard size={size}>
-        <ProductThumb size={size} src={imgSrc} isNew alt={name} />
-        <ProductDescription
-          productName={name}
-          stars={rating}
-          price={price}
-          isAvailable
-          size={size}
+    <StyledCard size={size}>
+      {linkUrl ? <Link to={linkUrl}>{content}</Link> : content}
+      <StyledShopButton>
+        <IconButton
+          icon="bagShopping"
+          size={buttonSize}
+          color="textInverse"
+          onClick={onClick}
         />
-        <StyledShopButton>
-          <IconButton
-            icon="bagShopping"
-            size={buttonSize}
-            color="textInverse"
-            onClick={onClick}
-          />
-        </StyledShopButton>
-      </StyledCard>
-    </Link>
+      </StyledShopButton>
+    </StyledCard>
   )
 }
