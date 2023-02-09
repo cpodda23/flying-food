@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { getRandomProducts } from '../../api'
 import { ProductDto } from '../../api/types'
 import { ProductCard } from '../../components/ProductCard'
-import { Stack } from '../../components/Stack'
+import { StyledGrid } from './styled'
 
 type Props = {
   id: string
@@ -10,24 +10,24 @@ type Props = {
 }
 
 export const ProductRandom = ({ id, count }: Props) => {
-  const [randomP, setRandomP] = useState<ProductDto[]>()
+  const [randomProducts, setRandomProducts] = useState<ProductDto[]>()
 
   useEffect(() => {
-    getRandomProducts(id, count).then((p) => setRandomP(p))
+    getRandomProducts(id, count).then(setRandomProducts)
   }, [])
 
   return (
-    <Stack direction="vertical">
-      {randomP?.map((r) => (
+    <StyledGrid>
+      {randomProducts?.map((r) => (
         <ProductCard
           size="sm"
           imgSrc={r.imageUrl}
-          linkUrl={`${r.id}`}
+          linkUrl={`../products/${r.id}`}
           name={r.name}
           rating={r.rating}
-          price={`${r.price.type} ${r.price.value}`}
+          price={r.price}
         />
       ))}
-    </Stack>
+    </StyledGrid>
   )
 }
