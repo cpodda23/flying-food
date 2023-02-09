@@ -1,22 +1,26 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { getProductsById, getTagsById } from '../../api'
+import { getProductsById, getTags } from '../../api'
 import { ProductDto, TagDto } from '../../api/types'
-import { Button } from '../../components/Button'
 import { Loading } from '../../components/Loading'
-import { ProductSelected } from '../../components/ProductSelected'
-import { QuantitySelector } from '../../components/QuantitySelector'
+import { Rating } from '../../components/Rating'
 import { Stack } from '../../components/Stack'
-import { StyledProductDetail } from './styled'
+import { Text } from '../../components/Text'
+import { ProductDetailFooter } from './ProductDetailFooter'
+import { ProductDetailHeader } from './ProductDetailHeader'
+import { ProductRandom } from './ProductRandom'
+import { StyledPaper, StyledProductDetail } from './styled'
 
 export const ProductDetail = () => {
   const params = useParams<{ id: string }>()
   const [product, setProduct] = useState<ProductDto>()
-  const [tags, setTags] = useState<TagDto>()
+  const [tagsById, setTagById] = useState<TagDto[]>()
 
   useEffect(() => {
-    getProductsById(params.id!).then(setProduct)
-    // getTagsById(product?.tags.map((tag) => tag) ? tags : '').setTags(tags)
+    Promise.all([getProductsById(params.id!), getTags()]).then(([product, tagsById]) => {
+      setProduct(product)
+      setTagById(tagsById)
+    })
   }, [])
 
   if (!product) {
@@ -24,29 +28,20 @@ export const ProductDetail = () => {
   }
 
   return (
-    <StyledProductDetail>
-      <ProductSelected
-        // productTag={tags}
-        imgSrc={product.imageUrl}
-        description={product.description}
-        productName={product.name}
-        stars={product.rating}
-      />
-
-      <Stack direction="horizontal">
-        <Button
-          bgColor="backgroundDark"
-          color="textInverse"
-          icon="bagShopping"
-          iconBgColor="primary"
-        >
-          add to cart
-        </Button>
-        <QuantitySelector />
+    <StyledPaper shadow rounded>
+      <Stack gap={30}>
+        <StyledProductDetail direction="vertical" gap={20}>
+          <ProductDetailHeader
+            productTags={tagsById?.filter(({ id }) => product.tags.includes(id))}
+            imgSrc={product.imageUrl}
+            productName={product.name}
+          />
+          <Rating value={product.rating} />
+          <Text>{product.description}</Text>
+          <ProductDetailFooter max={product.stock} />
+        </StyledProductDetail>
+        <ProductRandom id={product.id} />
       </Stack>
-    </StyledProductDetail>
+    </StyledPaper>
   )
 }
-
-// aggiungere api getProduct by id e random (prodotto da non visualizzare e numero di prodotti da visualizzare)
-// accedo al prodotto by id cliccando sulla ProductCard (ma non sul button del carrello)
