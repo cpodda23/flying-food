@@ -7,8 +7,6 @@ export const getTags = () => apiClient.get<TagDto[]>('tags')
 
 export const getProductsById = (id: string) => apiClient.get<ProductDto>(`products/${id}`)
 
-export const getTagsById = (id: string) => apiClient.get<TagDto>(`tags/${id}`)
-
 export const getRandomProducts = (id: string, count = 4) => {
   const query = new URLSearchParams({ id, count: count.toString() })
   return apiClient.get<ProductDto[]>(`products/random?${query}`)

@@ -35,3 +35,7 @@ export const StyledGrid = styled.div`
   grid-template-columns: repeat(2, 1fr);
   gap: 30px;
 `
+export const StyledDescription = styled.div`
+  display: flex;
+  justify-content: space-between;
+`
