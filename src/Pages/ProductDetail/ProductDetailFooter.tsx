@@ -5,9 +5,10 @@ import { Stack } from '../../components/Stack'
 
 type Props = {
   max: number
+  min: number
 }
 
-export const ProductDetailFooter = ({ max }: Props) => {
+export const ProductDetailFooter = ({ max, min }: Props) => {
   const [quantity, setQuantity] = useState(0)
   return (
     <Stack direction="horizontal">
@@ -19,7 +20,7 @@ export const ProductDetailFooter = ({ max }: Props) => {
       >
         add to cart
       </Button>
-      <QuantitySelector max={max} quantity={quantity} onClick={setQuantity} />
+      <QuantitySelector min={min} max={max} quantity={quantity} onClick={setQuantity} />
     </Stack>
   )
 }

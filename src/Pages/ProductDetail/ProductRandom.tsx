@@ -14,7 +14,7 @@ export const ProductRandom = ({ id, count }: Props) => {
 
   useEffect(() => {
     getRandomProducts(id, count).then(setRandomProducts)
-  }, [])
+  }, [id, count])
 
   return (
     <StyledGrid>

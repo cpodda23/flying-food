@@ -14,14 +14,16 @@ import { StyledPaper, StyledProductDetail } from './styled'
 export const ProductDetail = () => {
   const params = useParams<{ id: string }>()
   const [product, setProduct] = useState<ProductDto>()
-  const [tagsById, setTagById] = useState<TagDto[]>()
+  // const [tagsById, setTagById] = useState<Record<string, TagDto>>({})
+  const [tags, setTags] = useState<TagDto[]>()
 
   useEffect(() => {
-    Promise.all([getProductsById(params.id!), getTags()]).then(([product, tagsById]) => {
+    Promise.all([getProductsById(params.id!), getTags()]).then(([product, tags]) => {
       setProduct(product)
-      setTagById(tagsById)
+      // setTagById(tags.reduce((acc, tag) => ({ ...acc, [tag.id]: tag }), {}))
+      setTags(tags)
     })
-  }, [])
+  }, [params.id])
 
   if (!product) {
     return <Loading />
@@ -32,13 +34,14 @@ export const ProductDetail = () => {
       <Stack gap={30}>
         <StyledProductDetail direction="vertical" gap={20}>
           <ProductDetailHeader
-            productTags={tagsById?.filter(({ id }) => product.tags.includes(id))}
+            productTags={tags?.filter(({ id }) => product.tags.includes(id))}
+            // productTags={product.tags.map((tag) => tagsById[tag])}
             imgSrc={product.imageUrl}
             productName={product.name}
           />
           <Rating value={product.rating} />
           <Text>{product.description}</Text>
-          <ProductDetailFooter max={product.stock} />
+          <ProductDetailFooter max={product.stock} min={0} />
         </StyledProductDetail>
         <ProductRandom id={product.id} />
       </Stack>

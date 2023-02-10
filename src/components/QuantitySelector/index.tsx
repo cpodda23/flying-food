@@ -4,16 +4,19 @@ import { StyledQuantitySelector } from './styled'
 
 type Props = {
   quantity: number
-  max: number
+  max?: number
+  min?: number
   onClick: (q: number) => void
 }
-export const QuantitySelector = ({ quantity, max, onClick }: Props) => {
+export const QuantitySelector = ({ quantity, max, min, onClick }: Props) => {
   const onDecrement = () => {
-    if (quantity - 1 >= 0) onClick(quantity - 1)
+    if (!min || quantity - 1 >= min) onClick(quantity - 1)
   }
+
   const onIncrement = () => {
-    if (quantity + 1 <= max) onClick(quantity + 1)
+    if (!max || quantity + 1 <= max) onClick(quantity + 1)
   }
+
   return (
     <StyledQuantitySelector>
       <IconButton bgColor="backgroundDark" icon="minus" onClick={onDecrement} />
