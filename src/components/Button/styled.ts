@@ -9,6 +9,7 @@ export type StyledBaseButtonProps = {
   size: Size
   outlined?: boolean
   squared?: boolean
+  disabled?: boolean
 }
 
 export const StyledBaseButton = styled.button<StyledBaseButtonProps>`

@@ -17,6 +17,7 @@ export const IconButton = ({
   bgColor,
   inverse,
   outlined,
+  disabled,
   onClick
 }: Props) => {
   const iconSize = size === 'lg' ? 'xl' : 'sm'
@@ -30,6 +31,7 @@ export const IconButton = ({
       size={size}
       bgColor={backgroundColor}
       outlined={outlined}
+      disabled={disabled}
       onClick={onClick}
     >
       <IconContainer>

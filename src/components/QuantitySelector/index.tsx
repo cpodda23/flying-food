@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { IconButton } from '../Button'
 import { Text } from '../Text'
 import { StyledQuantitySelector } from './styled'
@@ -16,12 +17,21 @@ export const QuantitySelector = ({ quantity, max, min, onClick }: Props) => {
   const onIncrement = () => {
     if (!max || quantity + 1 <= max) onClick(quantity + 1)
   }
-
   return (
     <StyledQuantitySelector>
-      <IconButton bgColor="backgroundDark" icon="minus" onClick={onDecrement} />
+      <IconButton
+        bgColor="backgroundDark"
+        icon="minus"
+        onClick={onDecrement}
+        disabled={quantity === min}
+      />
       <Text bold>{quantity}</Text>
-      <IconButton bgColor="backgroundDark" icon="plus" onClick={onIncrement} />
+      <IconButton
+        bgColor="backgroundDark"
+        icon="plus"
+        onClick={onIncrement}
+        disabled={quantity === max}
+      />
     </StyledQuantitySelector>
   )
 }

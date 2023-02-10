@@ -13,6 +13,7 @@ export const BaseButton = ({
   className,
   outlined,
   squared,
+  disabled,
   onClick,
   size = 'md',
   radius = 4,
@@ -20,6 +21,7 @@ export const BaseButton = ({
 }: Props) => {
   return (
     <StyledBaseButton
+      disabled={disabled}
       outlined={outlined}
       size={size}
       className={className}
