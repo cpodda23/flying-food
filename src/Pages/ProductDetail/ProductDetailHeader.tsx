@@ -28,7 +28,13 @@ export const ProductDetailHeader = ({
         />
         <Stack gap={10}>
           {productTags?.map((t) => (
-            <StyledTag rounded bgColor="background" color="text" title={t.name} />
+            <StyledTag
+              rounded
+              bgColor="background"
+              color="text"
+              title={t.name}
+              key={t.id}
+            />
           ))}
         </Stack>
       </StyledDescription>

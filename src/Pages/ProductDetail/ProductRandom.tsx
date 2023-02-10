@@ -20,6 +20,7 @@ export const ProductRandom = ({ id, count }: Props) => {
     <StyledGrid>
       {randomProducts?.map((r) => (
         <ProductCard
+          key={r.id}
           size="sm"
           imgSrc={r.imageUrl}
           linkUrl={`../products/${r.id}`}
