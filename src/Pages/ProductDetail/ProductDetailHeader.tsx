@@ -17,15 +17,14 @@ export const ProductDetailHeader = ({
   productName,
   productTags
 }: Props) => {
+  const split = (i: number) => {
+    return productName.split(' ')[i]
+  }
   return (
     <StyledProductDetailHeader size="md">
       <ProductThumb size="sm" src={imgSrc} isNew={isNew} alt={productName} />
       <StyledDescription>
-        <SectionTitle
-          main={productName.split(' ')[0]}
-          secondary={productName.split(' ')[1]}
-          // usare altro metodo
-        />
+        <SectionTitle main={split(0)} secondary={split(1)} />
         <Stack gap={10}>
           {productTags?.map((t) => (
             <StyledTag
