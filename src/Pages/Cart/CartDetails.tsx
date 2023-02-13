@@ -10,12 +10,19 @@ export const CartDetails = () => {
       <StyledCartDetails>
         <Input
           bgColor="secondary"
-          label="Name and surname"
+          label="Name"
           labelColor="textInverse"
           placeholder="First Name"
           placeholderColor="text"
         />
-        <Input bgColor="secondary" placeholder="Surname" placeholderColor="text" />
+        <Input
+          bgColor="secondary"
+          label="Surname"
+          labelColor="textInverse"
+          placeholder="Last Name"
+          placeholderColor="text"
+        />
+
         <Input bgColor="secondary" label="Card number" labelColor="textInverse" />
         <Input
           bgColor="secondary"
@@ -26,11 +33,19 @@ export const CartDetails = () => {
         />
         <Input
           bgColor="secondary"
+          label="Data"
+          labelColor="textInverse"
+          placeholder="YYYY"
+          placeholderColor="text"
+        />
+        <Input
+          bgColor="secondary"
           label="Code"
           labelColor="textInverse"
           placeholder="XXX"
           placeholderColor="text"
         />
+
         <Button bgColor="text" color="textInverse">
           check out
         </Button>

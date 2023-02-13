@@ -4,9 +4,11 @@ import { CartProduct } from './CartProduct'
 
 export const ShoppingCart = () => {
   return (
-    <Stack direction="vertical">
+    <div>
       <SectionTitle main="shopping" secondary="cart" />
-      <CartProduct />
-    </Stack>
+      <Stack>
+        <CartProduct />
+      </Stack>
+    </div>
   )
 }
