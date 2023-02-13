@@ -8,11 +8,11 @@ import { Text } from '../../components/Text'
 import { StyledCartProduct } from './styled'
 
 // type Props = {
-//   product: ProductDto
 //   quantity: number
+//   product: ProductDto
 // }
 
-// export const CartProduct = ({ product, quantity }: Props) => {
+// export const CartProduct = ({ quantity, product }: Props) => {
 //   return (
 //     <StyledCartProduct>
 //       <Image src={product.imageUrl} alt={product.name} />
