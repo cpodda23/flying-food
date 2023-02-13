@@ -39,7 +39,7 @@ export const Header = ({ username, imageSrc }: Props) => {
       <StyledLowerHeader>
         <Searchbar outlined />
         <Stack centered gap={10}>
-          <IconButton icon="heartEmpty" bgColor="backgroundDark" color="lightGrey" />
+          <IconButton icon="bagShopping" bgColor="backgroundDark" color="textInverse" />
           <Button>web site</Button>
           <StyledHeaderSign>
             <Avatar size={36} username={username} imageSrc={imageSrc} />
