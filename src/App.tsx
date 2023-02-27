@@ -1,7 +1,9 @@
 import { ThemeProvider } from '@emotion/react'
 import { Global } from '@emotion/react'
+import { Provider } from 'react-redux'
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import { Layout } from './components/Layout'
+import { store } from './features/store'
 import { Cart } from './Pages/Cart'
 import { NotFound } from './Pages/NotFound'
 import { ProductDetail } from './Pages/ProductDetail'
@@ -11,6 +13,7 @@ import { theme } from './style/theme'
 
 function App() {
   return (
+    <Provider store={store}>
     <ThemeProvider theme={theme}>
       <Global styles={globalStyle} />
       <BrowserRouter>
@@ -25,7 +28,7 @@ function App() {
         </Routes>
       </BrowserRouter>
     </ThemeProvider>
-  )
+    </Provider>)
 }
 
 export default App

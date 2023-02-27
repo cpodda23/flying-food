@@ -1,12 +1,15 @@
 import { useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux'
 import { getProducts, getTags } from '../../api'
 import { ProductDto, TagDto } from '../../api/types'
 import { Loading } from '../../components/Loading'
 import { ProductCard } from '../../components/ProductCard'
+import { productsActions } from '../../features/products/reducer'
 import { PageHeader } from './PageHeader'
 import { StyledGrid, StyledProducts } from './styled'
 
 export const Products = () => {
+  const dispatch = useDispatch()
   const [products, setProducts] = useState<ProductDto[]>()
   const [tags, setTags] = useState<TagDto[]>()
   const [tagFilter, setTagFilter] = useState('')
@@ -26,7 +29,8 @@ export const Products = () => {
   useEffect(() => {
     Promise.all([getProducts(), getTags()]).then(([p, t]) => {
       setTagFilter(t.find(({ hidden }) => !hidden)?.id || '')
-      setProducts(p)
+      dispatch(productsActions.fetchProductsSuccess(p))
+      // setProducts(p)
       setTags(t)
     })
   }, [])
