@@ -2,11 +2,26 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { ProductDto } from '../../api/types'
 
 type ProductsState = {
-  products: ProductDto[]
+  productsList: ProductDto[]
+  productDetail: ProductDto
 }
 
 const initialState: ProductsState = {
-  products: []
+  productsList: [],
+  productDetail: {
+    discountRate: 0,
+    available: true,
+    rating: 0,
+    stock: 0,
+    delivery: 'string',
+    name: '',
+    imageUrl: '',
+    description: '',
+    price: '',
+    id: '',
+    new: true,
+    tags: ''
+  }
 }
 
 const productsSlice = createSlice({
@@ -14,7 +29,10 @@ const productsSlice = createSlice({
   initialState,
   reducers: {
     fetchProductsSuccess: (state, action: PayloadAction<ProductDto[]>) => {
-      state.products = action.payload
+      state.productsList = action.payload
+    },
+    fetchProductDetail: (state, action: PayloadAction<ProductDto>) => {
+      state.productDetail = action.payload
     }
   }
 })
