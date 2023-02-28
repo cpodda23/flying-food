@@ -13,9 +13,12 @@ const cartSlice = createSlice({
   name: 'carts',
   initialState,
   reducers: {
-    fetchCartProducts: (state, action: PayloadAction<ProductDto[]>) => {
-      state.products = action.payload
-    }
+    // addToCart: (state, action: PayloadAction<ProductDto[]>) => {
+    //   (state.products) ? state.products = action.payload :
+    // },
+    // removeFromCart: (state, action: PayloadAction<ProductDto>) => {
+    //   delete state.products
+    // }
   }
 })
 

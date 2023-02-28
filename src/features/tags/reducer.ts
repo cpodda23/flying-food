@@ -3,10 +3,12 @@ import { TagDto } from '../../api/types'
 
 type TagsState = {
   tags: TagDto[]
+  selectedTag: string
 }
 
 const initialState: TagsState = {
-  tags: []
+  tags: [],
+  selectedTag: ''
 }
 
 export const tagsSlice = createSlice({
@@ -15,6 +17,10 @@ export const tagsSlice = createSlice({
   reducers: {
     fetchTagsSuccess: (state, action: PayloadAction<TagDto[]>) => {
       state.tags = action.payload
+      state.selectedTag = action.payload.find(({ hidden }) => !hidden)?.id ?? ''
+    },
+    fetchSelectedTag: (state, action: PayloadAction<string>) => {
+      state.selectedTag = action.payload
     }
   }
 })

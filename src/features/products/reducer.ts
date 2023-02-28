@@ -5,12 +5,14 @@ type ProductsState = {
   productsList: ProductDto[]
   randomProducts: ProductDto[]
   productDetail: ProductDto | null
+  filteredProductsByTag: ProductDto[]
 }
 
 const initialState: ProductsState = {
   productsList: [],
   productDetail: null,
-  randomProducts: []
+  randomProducts: [],
+  filteredProductsByTag: []
 }
 
 const productsSlice = createSlice({
@@ -25,6 +27,9 @@ const productsSlice = createSlice({
     },
     fetchRandomProducts: (state, action: PayloadAction<ProductDto[]>) => {
       state.randomProducts = action.payload
+    },
+    fetchFilteredProduct: (state, action: PayloadAction<ProductDto[]>) => {
+      state.filteredProductsByTag = action.payload
     }
   }
 })
