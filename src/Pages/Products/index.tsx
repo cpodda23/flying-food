@@ -1,18 +1,21 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getProducts, getTags } from '../../api'
-import { ProductDto, TagDto } from '../../api/types'
+// import { ProductDto, TagDto } from '../../api/types'
 import { Loading } from '../../components/Loading'
 import { ProductCard } from '../../components/ProductCard'
 import { productsActions } from '../../features/products/reducer'
 import { selectProducts } from '../../features/products/selectors'
+import { tagsActions } from '../../features/tags/reducer'
+import { selectTags } from '../../features/tags/selectors'
 import { PageHeader } from './PageHeader'
 import { StyledGrid, StyledProducts } from './styled'
 
 export const Products = () => {
   const dispatch = useDispatch()
   const products = useSelector(selectProducts)
-  const [tags, setTags] = useState<TagDto[]>()
+  const tags = useSelector(selectTags)
+  // const [tags, setTags] = useState<TagDto[]>()
   const [tagFilter, setTagFilter] = useState('')
 
   /* const [loading, setLoading] = useState(false)
@@ -31,8 +34,9 @@ export const Products = () => {
     Promise.all([getProducts(), getTags()]).then(([p, t]) => {
       setTagFilter(t.find(({ hidden }) => !hidden)?.id || '')
       dispatch(productsActions.fetchProductsSuccess(p))
+      dispatch(tagsActions.fetchTagsSuccess(t))
       // setProducts(p)
-      setTags(t)
+      // setTags(t)
     })
   }, [dispatch])
 

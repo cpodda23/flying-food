@@ -1,8 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { productsReducer } from './products/reducer'
+import { tagsReducer } from './tags/reducer'
 
 const rootReducer = {
-  products: productsReducer
+  products: productsReducer,
+  tags: tagsReducer
 }
 
 export const store = configureStore({
