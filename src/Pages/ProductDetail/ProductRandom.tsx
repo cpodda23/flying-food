@@ -1,7 +1,9 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { getRandomProducts } from '../../api'
-import { ProductDto } from '../../api/types'
 import { ProductCard } from '../../components/ProductCard'
+import { productsActions } from '../../features/products/reducer'
+import { selectRandomProducts } from '../../features/products/selectors'
 import { StyledGrid } from './styled'
 
 type Props = {
@@ -10,11 +12,15 @@ type Props = {
 }
 
 export const ProductRandom = ({ id, count }: Props) => {
-  const [randomProducts, setRandomProducts] = useState<ProductDto[]>()
+  const dispach = useDispatch()
+  const randomProducts = useSelector(selectRandomProducts)
+  // const [randomProducts, setRandomProducts] = useState<ProductDto[]>()
 
   useEffect(() => {
-    getRandomProducts(id, count).then(setRandomProducts)
-  }, [id, count])
+    getRandomProducts(id, count).then((id) => {
+      dispach(productsActions.fetchRandomProducts(id))
+    })
+  }, [id, count, dispach])
 
   return (
     <StyledGrid>

@@ -3,25 +3,14 @@ import { ProductDto } from '../../api/types'
 
 type ProductsState = {
   productsList: ProductDto[]
-  productDetail: ProductDto
+  randomProducts: ProductDto[]
+  productDetail: ProductDto | null
 }
 
 const initialState: ProductsState = {
   productsList: [],
-  productDetail: {
-    discountRate: 0,
-    available: true,
-    rating: 0,
-    stock: 0,
-    delivery: 'string',
-    name: '',
-    imageUrl: '',
-    description: '',
-    price: '',
-    id: '',
-    new: true,
-    tags: ''
-  }
+  productDetail: null,
+  randomProducts: []
 }
 
 const productsSlice = createSlice({
@@ -33,6 +22,9 @@ const productsSlice = createSlice({
     },
     fetchProductDetail: (state, action: PayloadAction<ProductDto>) => {
       state.productDetail = action.payload
+    },
+    fetchRandomProducts: (state, action: PayloadAction<ProductDto[]>) => {
+      state.randomProducts = action.payload
     }
   }
 })
