@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { IconButton } from '../Button'
 import { Text } from '../Text'
 import { StyledQuantitySelector } from './styled'

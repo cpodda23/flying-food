@@ -7,7 +7,7 @@ import { ProductCard } from '../../components/ProductCard'
 import { productsActions } from '../../features/products/reducer'
 import { selectProducts } from '../../features/products/selectors'
 import { tagsActions } from '../../features/tags/reducer'
-import { selectTags } from '../../features/tags/selectors'
+import { selectedTag, selectTags } from '../../features/tags/selectors'
 import { PageHeader } from './PageHeader'
 import { StyledGrid, StyledProducts } from './styled'
 
@@ -15,8 +15,9 @@ export const Products = () => {
   const dispatch = useDispatch()
   const products = useSelector(selectProducts)
   const tags = useSelector(selectTags)
+  const selectTag = useSelector(selectedTag)
   // const [tags, setTags] = useState<TagDto[]>()
-  const [tagFilter, setTagFilter] = useState('')
+  // const [tagFilter, setTagFilter] = useState('')
 
   /* const [loading, setLoading] = useState(false)
   
@@ -32,7 +33,7 @@ export const Products = () => {
 
   useEffect(() => {
     Promise.all([getProducts(), getTags()]).then(([p, t]) => {
-      setTagFilter(t.find(({ hidden }) => !hidden)?.id || '')
+      // setTagFilter(t.find(({ hidden }) => !hidden)?.id || '')
       dispatch(productsActions.fetchProductsSuccess(p))
       dispatch(tagsActions.fetchTagsSuccess(t))
       // setProducts(p)
@@ -48,15 +49,17 @@ export const Products = () => {
     )
   }
 
-  const filteredTags = tags.filter((tag) => !tag.hidden)
-
-  const filteredProducts = tagFilter
-    ? products.filter((product) => product.tags.some((tag) => tag === tagFilter))
+  const filteredProducts = selectTag
+    ? products.filter((product) => product.tags.some((tag) => tag === selectTag))
     : products
 
   return (
     <StyledProducts>
-      <PageHeader tags={filteredTags} selectedTag={tagFilter} onTagClick={setTagFilter} />
+      <PageHeader
+        tags={tags}
+        selectedTag={selectTag}
+        onTagClick={(selectTag) => dispatch(tagsActions.fetchSelectedTag(selectTag))}
+      />
       <StyledGrid>
         {filteredProducts?.map((product) => (
           <ProductCard

@@ -18,7 +18,7 @@ type Props = {
   onClick?: () => void
 }
 
-const priceSymbols = {
+export const priceSymbols = {
   USD: '$',
   EUR: '€',
   JPY: '¥'
@@ -34,7 +34,6 @@ export const ProductCard = ({
   onClick
 }: Props) => {
   const buttonSize = size === 'md' ? 'lg' : 'md'
-
   const content = (
     <>
       <ProductThumb size={size} src={imgSrc} isNew alt={name} />
