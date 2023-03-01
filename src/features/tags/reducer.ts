@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { createAction, createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { TagDto } from '../../api/types'
 
 type TagsState = {
@@ -26,4 +26,7 @@ export const tagsSlice = createSlice({
 })
 
 export const tagsReducer = tagsSlice.reducer
-export const tagsActions = tagsSlice.actions
+export const tagsActions = {
+  ...tagsSlice.actions,
+  fetchTags: createAction('tags/fetchTags')
+}

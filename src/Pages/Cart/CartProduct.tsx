@@ -6,7 +6,6 @@ import { QuantitySelector } from '../../components/QuantitySelector'
 import { Stack } from '../../components/Stack'
 import { Tag } from '../../components/Tag'
 import { Text } from '../../components/Text'
-import { selectProductDetail } from '../../features/products/selectors'
 import { StyledCartProduct } from './styled'
 
 type Props = {
@@ -32,22 +31,3 @@ export const CartProduct = ({ quantity, product }: Props) => {
     </StyledCartProduct>
   )
 }
-// export const CartProduct = () => {
-//   return (
-//     <StyledCartProduct>
-//       <Image
-//         src="https://www.my-personaltrainer.it/2020/09/07/hamburger_900x760.jpeg"
-//         width={100}
-//       />
-//       <Stack direction="vertical" centered>
-//         <Tag title="free delivery" size="sm" rounded />
-//         <Text bold capitalize>
-//           burger king
-//         </Text>
-//       </Stack>
-//       <QuantitySelector quantity={0} max={2} onClick={() => {}} />
-//       <Text bold>$55.99</Text>
-//       <IconButton icon="x" bgColor="danger" onClick={() => {}} />
-//     </StyledCartProduct>
-//   )
-// }

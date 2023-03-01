@@ -1,5 +1,4 @@
 import { RootState } from '../store'
-import { selectedTag } from '../tags/selectors'
 
 export const selectProducts = (state: RootState) => state.products.productsList
 

@@ -33,13 +33,13 @@ export const Products = () => {
   }, []) */
 
   useEffect(() => {
-    Promise.all([getProducts(), getTags()]).then(([p, t]) => {
-      // setTagFilter(t.find(({ hidden }) => !hidden)?.id || '')
-      dispatch(productsActions.fetchProductsSuccess(p))
-      dispatch(tagsActions.fetchTagsSuccess(t))
-      // setProducts(p)
-      // setTags(t)
-    })
+    // Promise.all([getProducts(), getTags()]).then(([p, t]) => {
+    // setTagFilter(t.find(({ hidden }) => !hidden)?.id || '')
+    dispatch(productsActions.fetchProducts())
+    dispatch(tagsActions.fetchTags())
+    // setProducts(p)
+    // setTags(t)
+    // })
   }, [dispatch])
 
   if (!products || !tags) {

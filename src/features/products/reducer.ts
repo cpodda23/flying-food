@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { createAction, createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { ProductDto } from '../../api/types'
 
 type ProductsState = {
@@ -35,4 +35,8 @@ const productsSlice = createSlice({
 })
 
 export const productsReducer = productsSlice.reducer
-export const productsActions = productsSlice.actions
+export const productsActions = {
+  ...productsSlice.actions,
+  fetchProducts: createAction('products/fetchProducts'),
+  fetchProductsById: createAction<string>('products/fetchProductsById')
+}

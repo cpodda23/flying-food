@@ -9,6 +9,8 @@ import { Stack } from '../../components/Stack'
 import { Text } from '../../components/Text'
 import { productsActions } from '../../features/products/reducer'
 import { selectProductDetail } from '../../features/products/selectors'
+import { tagsActions } from '../../features/tags/reducer'
+import { selectTags } from '../../features/tags/selectors'
 import { ProductDetailFooter } from './ProductDetailFooter'
 import { ProductDetailHeader } from './ProductDetailHeader'
 import { ProductRandom } from './ProductRandom'
@@ -19,15 +21,17 @@ export const ProductDetail = () => {
   const dispatch = useDispatch()
   // const [product, setProduct] = useState<ProductDto>()
   const product = useSelector(selectProductDetail)
+  const tags = useSelector(selectTags)
   // const [tagsById, setTagById] = useState<Record<string, TagDto>>({})
-  const [tags, setTags] = useState<TagDto[]>()
+  // const [tags, setTags] = useState<TagDto[]>()
 
   useEffect(() => {
-    Promise.all([getProductsById(params.id!), getTags()]).then(([product, tags]) => {
-      dispatch(productsActions.fetchProductDetail(product))
-      // setTagById(tags.reduce((acc, tag) => ({ ...acc, [tag.id]: tag }), {}))
-      setTags(tags)
-    })
+    // Promise.all([getProductsById(params.id!), getTags()]).then(([product, tags]) => {
+    dispatch(productsActions.fetchProductsById(params.id!))
+    dispatch(tagsActions.fetchTags())
+    // setTagById(tags.reduce((acc, tag) => ({ ...acc, [tag.id]: tag }), {}))
+    // setTags(tags)
+    // })
   }, [params.id, dispatch])
 
   if (!product) {
