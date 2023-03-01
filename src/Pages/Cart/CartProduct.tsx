@@ -14,31 +14,7 @@ type Props = {
   product: ProductDto
 }
 
-export const CartProduct = ({
-  quantity = 0,
-  product = {
-    discountRate: null,
-    size: {
-      type: 'gram',
-      value: 440
-    },
-    available: true,
-    rating: 4,
-    stock: 0,
-    delivery: 'c8f067e6-298f-4c74-a8b1-72c985a6554b',
-    name: 'Hawaii Burger',
-    imageUrl: 'https://flying-food-assets.s3.eu-central-1.amazonaws.com/burger-1.png',
-    description:
-      'Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.\n\nCurabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.',
-    id: '3c8a9a55-08b1-4e91-89b9-840f76b27df6',
-    price: {
-      type: 'USD',
-      value: 13.64
-    },
-    new: false,
-    tags: ['38d750f9-e7d5-4fa1-b1f7-93008a5a5a72']
-  }
-}: Props) => {
+export const CartProduct = ({ quantity, product }: Props) => {
   return (
     <StyledCartProduct>
       <Image src={product.imageUrl} alt={product.name} width={100} />

@@ -4,6 +4,7 @@ import { getProducts, getTags } from '../../api'
 // import { ProductDto, TagDto } from '../../api/types'
 import { Loading } from '../../components/Loading'
 import { ProductCard } from '../../components/ProductCard'
+import { cartActions } from '../../features/cart/reducer'
 import { productsActions } from '../../features/products/reducer'
 import { selectProducts } from '../../features/products/selectors'
 import { tagsActions } from '../../features/tags/reducer'
@@ -69,6 +70,7 @@ export const Products = () => {
             imgSrc={product.imageUrl}
             rating={product.rating}
             price={product.price}
+            onClick={() => dispatch(cartActions.addToCart(product))}
           />
         ))}
       </StyledGrid>

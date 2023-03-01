@@ -46,7 +46,7 @@ export const ProductDetail = () => {
           />
           <Rating value={product.rating} />
           <Text>{product.description}</Text>
-          <ProductDetailFooter max={product.stock} min={0} />
+          <ProductDetailFooter max={product.stock} min={0} product={product} />
         </StyledProductDetail>
         <ProductRandom id={product.id} />
       </Stack>

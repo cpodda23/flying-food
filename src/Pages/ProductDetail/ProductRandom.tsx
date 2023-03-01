@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getRandomProducts } from '../../api'
 import { ProductCard } from '../../components/ProductCard'
+import { cartActions } from '../../features/cart/reducer'
 import { productsActions } from '../../features/products/reducer'
 import { selectRandomProducts } from '../../features/products/selectors'
 import { StyledGrid } from './styled'
@@ -12,15 +13,15 @@ type Props = {
 }
 
 export const ProductRandom = ({ id, count }: Props) => {
-  const dispach = useDispatch()
+  const dispatch = useDispatch()
   const randomProducts = useSelector(selectRandomProducts)
   // const [randomProducts, setRandomProducts] = useState<ProductDto[]>()
 
   useEffect(() => {
     getRandomProducts(id, count).then((id) => {
-      dispach(productsActions.fetchRandomProducts(id))
+      dispatch(productsActions.fetchRandomProducts(id))
     })
-  }, [id, count, dispach])
+  }, [id, count, dispatch])
 
   return (
     <StyledGrid>
@@ -33,6 +34,7 @@ export const ProductRandom = ({ id, count }: Props) => {
           name={r.name}
           rating={r.rating}
           price={r.price}
+          onClick={() => dispatch(cartActions.addToCart(r))}
         />
       ))}
     </StyledGrid>

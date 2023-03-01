@@ -2,20 +2,20 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { ProductDto } from '../../api/types'
 
 type CartState = {
-  products: ProductDto[]
+  product: ProductDto | null
 }
 
 const initialState: CartState = {
-  products: []
+  product: null
 }
 
 const cartSlice = createSlice({
   name: 'carts',
   initialState,
   reducers: {
-    // addToCart: (state, action: PayloadAction<ProductDto[]>) => {
-    //   (state.products) ? state.products = action.payload :
-    // },
+    addToCart: (state, action: PayloadAction<ProductDto>) => {
+      state.product = action.payload
+    }
     // removeFromCart: (state, action: PayloadAction<ProductDto>) => {
     //   delete state.products
     // }

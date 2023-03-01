@@ -1,14 +1,19 @@
 import { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { ProductDto } from '../../api/types'
 import { Button } from '../../components/Button'
 import { QuantitySelector } from '../../components/QuantitySelector'
 import { Stack } from '../../components/Stack'
+import { cartActions } from '../../features/cart/reducer'
 
 type Props = {
   max: number
   min: number
+  product: ProductDto
 }
 
-export const ProductDetailFooter = ({ max, min }: Props) => {
+export const ProductDetailFooter = ({ max, min, product }: Props) => {
+  const dispatch = useDispatch()
   const [quantity, setQuantity] = useState(0)
   return (
     <Stack direction="horizontal">
@@ -17,6 +22,7 @@ export const ProductDetailFooter = ({ max, min }: Props) => {
         color="textInverse"
         icon="bagShopping"
         iconBgColor="primary"
+        onClick={() => dispatch(cartActions.addToCart(product))}
       >
         add to cart
       </Button>
