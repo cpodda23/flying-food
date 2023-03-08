@@ -4,6 +4,8 @@ import { Provider } from 'react-redux'
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import { Layout } from './components/Layout'
 import { store } from './features/store'
+import { tagsActions } from './features/tags/reducer'
+import { useAction } from './hooks/useAction'
 import { Cart } from './Pages/Cart'
 import { NotFound } from './Pages/NotFound'
 import { ProductDetail } from './Pages/ProductDetail'
@@ -12,6 +14,8 @@ import { globalStyle } from './style/global'
 import { theme } from './style/theme'
 
 function App() {
+  useAction(tagsActions.fetchTags(), [])
+
   return (
     <Provider store={store}>
       <ThemeProvider theme={theme}>

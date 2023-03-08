@@ -1,7 +1,4 @@
-import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { getProducts, getTags } from '../../api'
-// import { ProductDto, TagDto } from '../../api/types'
 import { Loading } from '../../components/Loading'
 import { ProductCard } from '../../components/ProductCard'
 import { cartActions } from '../../features/cart/reducer'
@@ -9,6 +6,7 @@ import { productsActions } from '../../features/products/reducer'
 import { selectProducts } from '../../features/products/selectors'
 import { tagsActions } from '../../features/tags/reducer'
 import { selectedTag, selectTags } from '../../features/tags/selectors'
+import { useAction } from '../../hooks/useAction'
 import { PageHeader } from './PageHeader'
 import { StyledGrid, StyledProducts } from './styled'
 
@@ -17,30 +15,8 @@ export const Products = () => {
   const products = useSelector(selectProducts)
   const tags = useSelector(selectTags)
   const selectTag = useSelector(selectedTag)
-  // const [tags, setTags] = useState<TagDto[]>()
-  // const [tagFilter, setTagFilter] = useState('')
 
-  /* const [loading, setLoading] = useState(false)
-  
-    useEffect(() => {
-    setLoading(true)
-    Promise.all([getProducts(), getTags()])
-      .then(([p, t]) => {
-        setProducts(p)
-        setTags(t)
-      })
-      .then(() => setLoading(false))
-  }, []) */
-
-  useEffect(() => {
-    // Promise.all([getProducts(), getTags()]).then(([p, t]) => {
-    // setTagFilter(t.find(({ hidden }) => !hidden)?.id || '')
-    dispatch(productsActions.fetchProducts())
-    dispatch(tagsActions.fetchTags())
-    // setProducts(p)
-    // setTags(t)
-    // })
-  }, [dispatch])
+  useAction(productsActions.fetchProducts(), [])
 
   if (!products || !tags) {
     return (
@@ -70,7 +46,7 @@ export const Products = () => {
             imgSrc={product.imageUrl}
             rating={product.rating}
             price={product.price}
-            onClick={() => dispatch(cartActions.addToCart(product))}
+            onClick={() => dispatch(cartActions.addToCart({ product, q: 1 }))}
           />
         ))}
       </StyledGrid>

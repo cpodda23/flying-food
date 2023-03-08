@@ -3,8 +3,8 @@ import { ProductDto } from '../../api/types'
 
 type ProductsState = {
   productsList: ProductDto[]
-  randomProducts: ProductDto[]
   productDetail: ProductDto | null
+  randomProducts: ProductDto[]
   filteredProductsByTag: ProductDto[]
 }
 
@@ -35,6 +35,7 @@ const productsSlice = createSlice({
 })
 
 export const productsReducer = productsSlice.reducer
+
 export const productsActions = {
   ...productsSlice.actions,
   fetchProducts: createAction('products/fetchProducts'),
