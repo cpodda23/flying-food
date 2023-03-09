@@ -7,7 +7,7 @@ export function useAction(action: Action, dependencies: unknown[]) {
 
   useEffect(() => {
     dispatch(action)
-  }, dependencies) // eslint-disable-line
+  }, dependencies || []) // eslint-disable-line
 
   return null
 }

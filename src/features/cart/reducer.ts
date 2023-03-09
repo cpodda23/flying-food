@@ -16,11 +16,16 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     addToCart: (state, action: PayloadAction<CartProduct>) => {
-      state.products.push(action.payload)
+      const find = state.products.find((p) => p === action.payload)
+      if (find) {
+        find.q += action.payload.q
+      } else {
+        state.products.push(action.payload)
+      }
+    },
+    removeFromCart: (state, action: PayloadAction<CartProduct>) => {
+      state.products.filter((product) => product !== action.payload)
     }
-    // removeFromCart: (state, action: PayloadAction<ProductDto>) => {
-    //   delete state.products
-    // }
   }
 })
 

@@ -8,7 +8,7 @@ type Props = {
   min?: number
   onClick: (q: number) => void
 }
-export const QuantitySelector = ({ quantity, max, min, onClick }: Props) => {
+export const QuantitySelector = ({ quantity, max, min = 0, onClick }: Props) => {
   const onDecrement = () => {
     if (!min || quantity - 1 >= min) onClick(quantity - 1)
   }

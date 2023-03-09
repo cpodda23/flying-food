@@ -6,14 +6,19 @@ import { CartProduct } from './CartProduct'
 
 export const ShoppingCart = () => {
   const cartProducts = useSelector(selectCartProducts)
+  console.log(cartProducts)
   return (
     <div>
       <SectionTitle main="shopping" secondary="cart" />
-      <CartProduct quantity={0} product={cartProducts} />
-      {/* <Stack direction='vertical'>
+      <Stack direction="vertical">
         {cartProducts.map((product) => (
+          <CartProduct
+            quantity={product.q}
+            product={product.product}
+            key={product.product.id}
+          />
         ))}
-      </Stack> */}
+      </Stack>
     </div>
   )
 }

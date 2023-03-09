@@ -14,7 +14,7 @@ import { globalStyle } from './style/global'
 import { theme } from './style/theme'
 
 function App() {
-  useAction(tagsActions.fetchTags(), [])
+  //  useAction(tagsActions.fetchTags(), [])
 
   return (
     <Provider store={store}>

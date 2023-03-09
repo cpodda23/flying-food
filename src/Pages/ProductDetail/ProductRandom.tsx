@@ -34,7 +34,7 @@ export const ProductRandom = ({ id, count }: Props) => {
           name={r.name}
           rating={r.rating}
           price={r.price}
-          onClick={() => dispatch(cartActions.addToCart(r))}
+          onClick={() => dispatch(cartActions.addToCart({ product: r, q: 1 }))}
         />
       ))}
     </StyledGrid>

@@ -22,7 +22,7 @@ const productsSlice = createSlice({
     fetchProductsSuccess: (state, action: PayloadAction<ProductDto[]>) => {
       state.productsList = action.payload
     },
-    fetchProductDetail: (state, action: PayloadAction<ProductDto>) => {
+    fetchProductDetailSuccess: (state, action: PayloadAction<ProductDto>) => {
       state.productDetail = action.payload
     },
     fetchRandomProducts: (state, action: PayloadAction<ProductDto[]>) => {

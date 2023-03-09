@@ -22,7 +22,7 @@ export const ProductDetailFooter = ({ max, min, product }: Props) => {
         color="textInverse"
         icon="bagShopping"
         iconBgColor="primary"
-        onClick={() => dispatch(cartActions.addToCart(product))}
+        onClick={() => dispatch(cartActions.addToCart({ product, q: quantity }))}
       >
         add to cart
       </Button>
