@@ -1,4 +1,6 @@
+import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { selectCartQuantity } from '../../features/cart/selectors'
 import { Avatar } from '../Avatar'
 import { Button, IconButton } from '../Button'
 import { Searchbar } from '../SearchBar'
@@ -8,6 +10,7 @@ import { Text } from '../Text'
 import {
   StyledHeader,
   StyledHeaderSign,
+  StyledHeaderTag,
   StyledLowerHeader,
   StyledStack,
   StyledUpperHeader
@@ -24,6 +27,7 @@ const languages = [
 ]
 
 export const Header = ({ username, imageSrc }: Props) => {
+  const quantity = useSelector(selectCartQuantity)
   return (
     <StyledHeader>
       <StyledUpperHeader>
@@ -43,6 +47,15 @@ export const Header = ({ username, imageSrc }: Props) => {
           <Link to={'../cart'}>
             <IconButton icon="bagShopping" bgColor="backgroundDark" color="textInverse" />
           </Link>
+          {quantity !== 0 && (
+            <StyledHeaderTag
+              title={quantity.toString()}
+              bgColor="danger"
+              color="textInverse"
+              rounded
+              size="sm"
+            />
+          )}
           <Button>web site</Button>
           <StyledHeaderSign>
             <Avatar size={36} username={username} imageSrc={imageSrc} />

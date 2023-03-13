@@ -6,3 +6,6 @@ export const selectCartProducts = (state: RootState) => state.cart.products
 //   const prod = state.cart.products.find((p) => p.product.id === id)
 //   return prod?.q
 // }
+
+export const selectCartQuantity = (state: RootState) =>
+  state.cart.products.reduce((acc, curr) => acc + curr.q, 0)
