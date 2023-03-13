@@ -46,9 +46,6 @@ export const Header = ({ username, imageSrc }: Props) => {
         <Logo />
         <Searchbar outlined />
         <Stack centered gap={10}>
-          <Link to={'../cart'}>
-            <IconButton icon="bagShopping" bgColor="backgroundDark" color="textInverse" />
-          </Link>
           {quantity !== 0 && (
             <StyledHeaderTag
               title={quantity.toString()}
@@ -58,6 +55,9 @@ export const Header = ({ username, imageSrc }: Props) => {
               size="sm"
             />
           )}
+          <Link to={'../cart'}>
+            <IconButton icon="bagShopping" bgColor="backgroundDark" color="textInverse" />
+          </Link>
           <Button>web site</Button>
           <StyledHeaderSign>
             <Avatar size={36} username={username} imageSrc={imageSrc} />

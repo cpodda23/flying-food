@@ -35,5 +35,5 @@ export const StyledHeaderSign = styled.div`
   align-items: center;
 `
 export const StyledHeaderTag = styled(Tag)`
-  transform: translateX(-20px) translateY(10px);
+  transform: translateX(20px) translateY(10px);
 `
