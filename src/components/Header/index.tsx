@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { selectCartQuantity } from '../../features/cart/selectors'
 import { Avatar } from '../Avatar'
 import { Button, IconButton } from '../Button'
+import Logo from '../Logo'
 import { Searchbar } from '../SearchBar'
 import { Select } from '../Select'
 import { Stack } from '../Stack'
@@ -42,6 +43,7 @@ export const Header = ({ username, imageSrc }: Props) => {
       </StyledUpperHeader>
 
       <StyledLowerHeader>
+        <Logo />
         <Searchbar outlined />
         <Stack centered gap={10}>
           <Link to={'../cart'}>
