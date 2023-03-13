@@ -29,7 +29,6 @@ export const ProductDetail = () => {
         <StyledProductDetail direction="vertical" gap={20}>
           <ProductDetailHeader
             productTags={tags?.filter(({ id }) => product.tags.includes(id))}
-            // productTags={product.tags.map((tag) => tagsById[tag])}
             imgSrc={product.imageUrl}
             productName={product.name}
           />

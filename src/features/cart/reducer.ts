@@ -15,16 +15,29 @@ const cartSlice = createSlice({
   name: 'carts',
   initialState,
   reducers: {
-    addToCart: (state, action: PayloadAction<CartProduct>) => {
-      const find = state.products.find((p) => p === action.payload)
-      if (find) {
-        find.q += action.payload.q
+    addToCart: (state, { payload }: PayloadAction<CartProduct>) => {
+      const found = state.products.find((p) => p.product.id === payload.product.id)
+      if (found) {
+        found.q += payload.q
       } else {
-        state.products.push(action.payload)
+        state.products.push(payload)
       }
     },
-    removeFromCart: (state, action: PayloadAction<CartProduct>) => {
-      state.products.filter((product) => product !== action.payload)
+    updateQuantity: (state, { payload }: PayloadAction<{ id: string; q: number }>) => {
+      const found = state.products.find((p) => p.product.id === payload.id)
+      if (found) found.q = payload.q
+    },
+    incrementQuantity: (state, { payload }: PayloadAction<{ id: string; q: number }>) => {
+      const found = state.products.find((p) => p.product.id === payload.id)
+      if (found) found.q += payload.q
+    },
+    decrementQuantity: (state, { payload }: PayloadAction<{ id: string; q: number }>) => {
+      const found = state.products.find((p) => p.product.id === payload.id)
+      if (found) found.q -= payload.q
+    },
+    removeFromCart: (state, { payload }: PayloadAction<string>) => {
+      const removed = state.products.filter((p) => p.product.id !== payload)
+      state.products = removed
     }
   }
 })

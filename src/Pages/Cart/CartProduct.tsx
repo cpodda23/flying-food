@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { ProductDto } from '../../api/types'
 import { IconButton } from '../../components/Button'
 import { Image } from '../../components/Image'
@@ -9,7 +9,6 @@ import { Stack } from '../../components/Stack'
 import { Tag } from '../../components/Tag'
 import { Text } from '../../components/Text'
 import { cartActions } from '../../features/cart/reducer'
-import { selectCartProducts } from '../../features/cart/selectors'
 import { StyledCartProduct } from './styled'
 
 type Props = {
@@ -19,7 +18,7 @@ type Props = {
 
 export const CartProduct = ({ product, quantity }: Props) => {
   const dispatch = useDispatch()
-  const [q, setQ] = useState(quantity)
+
   return (
     <StyledCartProduct>
       <Image src={product.imageUrl} alt={product.name} width={100} />
@@ -29,14 +28,18 @@ export const CartProduct = ({ product, quantity }: Props) => {
           {product.name}
         </Text>
       </Stack>
-      <QuantitySelector quantity={q} max={product.stock} onClick={setQ} />
-      <Text inline bold>{`${priceSymbols[product.price.type]} ${
-        product.price.value
-      }`}</Text>
+      <QuantitySelector
+        quantity={quantity}
+        max={product.stock}
+        onClick={(q) => dispatch(cartActions.updateQuantity({ id: product.id, q }))}
+      />
+      <Text inline bold>{`${priceSymbols[product.price.type]}${(
+        product.price.value * quantity
+      ).toFixed(2)}`}</Text>
       <IconButton
         icon="x"
         bgColor="danger"
-        onClick={() => dispatch(cartActions.removeFromCart({ product, q: quantity }))}
+        onClick={() => dispatch(cartActions.removeFromCart(product.id))}
       />
     </StyledCartProduct>
   )
