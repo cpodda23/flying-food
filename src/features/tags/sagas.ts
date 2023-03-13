@@ -3,11 +3,11 @@ import { getTags } from '../../api'
 import { TagDto } from '../../api/types'
 import { tagsActions } from './reducer'
 
-function* fetchTags(action: ReturnType<typeof tagsActions.fetchTagsSuccess>) {
+function* fetchTags() {
   const tags: TagDto[] = yield call(getTags)
   yield put(tagsActions.fetchTagsSuccess(tags))
 }
 
 export function* tagsSaga() {
-  yield takeLatest(tagsActions.fetchTagsSuccess, fetchTags)
+  yield takeLatest(tagsActions.fetchTags.toString(), fetchTags)
 }
