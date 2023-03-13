@@ -6,7 +6,7 @@ import { StyledDescription, StyledProductDetailHeader, StyledTag } from './style
 
 type Props = {
   imgSrc: string
-  isNew?: boolean
+  isNew: boolean
   productName: string
   productTags?: TagDto[]
 }

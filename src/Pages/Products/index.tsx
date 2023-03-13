@@ -40,12 +40,15 @@ export const Products = () => {
       <StyledGrid>
         {filteredProducts?.map((product) => (
           <ProductCard
+            isAvailable={product.available}
+            isNew={product.new}
             linkUrl={`${product.id}`}
             key={product.id}
             name={product.name}
             imgSrc={product.imageUrl}
             rating={product.rating}
             price={product.price}
+            isDisabled={false}
             onClick={() => dispatch(cartActions.addToCart({ product, q: 1 }))}
           />
         ))}

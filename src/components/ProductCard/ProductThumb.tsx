@@ -6,13 +6,13 @@ type Props = {
   src: string
   alt: string
   size: Size
-  isNew?: boolean
+  isNew: boolean
 }
 
-export const ProductThumb = ({ src, alt, size = 'md' }: Props) => {
+export const ProductThumb = ({ src, alt, size = 'md', isNew }: Props) => {
   return (
     <StyledProductThumb size={size}>
-      <StyledTag title="NEW" bgColor="secondary" size="sm" />
+      {isNew ? <StyledTag title="NEW" bgColor="secondary" size="sm" /> : null}
       <Image src={src} alt={alt} />
     </StyledProductThumb>
   )

@@ -27,6 +27,9 @@ export const ProductRandom = ({ id, count }: Props) => {
     <StyledGrid>
       {randomProducts?.map((r) => (
         <ProductCard
+          isAvailable={r.available}
+          isNew={r.new}
+          isDisabled={false}
           key={r.id}
           size="sm"
           imgSrc={r.imageUrl}

@@ -10,11 +10,13 @@ type Props = {
   id?: string
   imgSrc: string
   name: string
-  isAvailable?: boolean
+  isAvailable: boolean
   rating: number
   price: ValueType
   size?: Size
   linkUrl?: string
+  isNew: boolean
+  isDisabled: boolean
   onClick?: () => void
 }
 
@@ -31,17 +33,20 @@ export const ProductCard = ({
   price,
   size = 'md',
   linkUrl,
+  isAvailable,
+  isNew,
+  isDisabled,
   onClick
 }: Props) => {
   const buttonSize = size === 'md' ? 'lg' : 'md'
   const content = (
     <>
-      <ProductThumb size={size} src={imgSrc} isNew alt={name} />
+      <ProductThumb size={size} src={imgSrc} isNew={isNew} alt={name} />
       <ProductDescription
         productName={name}
         stars={rating}
         price={`${priceSymbols[price.type]} ${price.value}`}
-        isAvailable
+        isAvailable={isAvailable}
         size={size}
       />
     </>
@@ -56,6 +61,7 @@ export const ProductCard = ({
           size={buttonSize}
           color="textInverse"
           onClick={onClick}
+          disabled={isDisabled}
         />
       </StyledShopButton>
     </StyledCard>
