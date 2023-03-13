@@ -1,6 +1,5 @@
 import styled from '@emotion/styled'
 import { Stack } from '../Stack'
-import { Tag } from '../Tag'
 
 export const StyledHeader = styled.header``
 
@@ -33,7 +32,4 @@ export const StyledHeaderSign = styled.div`
   gap: 8px;
   display: flex;
   align-items: center;
-`
-export const StyledHeaderTag = styled(Tag)`
-  transform: translateX(20px) translateY(10px);
 `

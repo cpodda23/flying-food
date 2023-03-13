@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { selectCartQuantity } from '../../features/cart/selectors'
 import { Avatar } from '../Avatar'
 import { Button, IconButton } from '../Button'
+import { CartButton } from '../CartButton'
 import Logo from '../Logo'
 import { Searchbar } from '../SearchBar'
 import { Select } from '../Select'
@@ -11,7 +12,6 @@ import { Text } from '../Text'
 import {
   StyledHeader,
   StyledHeaderSign,
-  StyledHeaderTag,
   StyledLowerHeader,
   StyledStack,
   StyledUpperHeader
@@ -46,18 +46,7 @@ export const Header = ({ username, imageSrc }: Props) => {
         <Logo />
         <Searchbar outlined />
         <Stack centered gap={10}>
-          {quantity !== 0 && (
-            <StyledHeaderTag
-              title={quantity.toString()}
-              bgColor="danger"
-              color="textInverse"
-              rounded
-              size="sm"
-            />
-          )}
-          <Link to={'../cart'}>
-            <IconButton icon="bagShopping" bgColor="backgroundDark" color="textInverse" />
-          </Link>
+          <CartButton quantity={quantity} />
           <Button>web site</Button>
           <StyledHeaderSign>
             <Avatar size={36} username={username} imageSrc={imageSrc} />
